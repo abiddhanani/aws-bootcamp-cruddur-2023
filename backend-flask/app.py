@@ -3,6 +3,21 @@ from flask import request
 from flask_cors import CORS, cross_origin
 import os
 
+
+#cloud watch import
+#import watchtower
+#import logging
+#from time import strftime
+
+# Configuring Logger to Use CloudWatch
+#LOGGER = logging.getLogger(__name__)
+#LOGGER.setLevel(logging.DEBUG)
+#console_handler = logging.StreamHandler()
+#cw_handler = watchtower.CloudWatchLogHandler(log_group='cruddur')
+#LOGGER.addHandler(console_handler)
+#LOGGER.addHandler(cw_handler)
+#LOGGER.info("test log")
+
 from services.home_activities import *
 from services.notifications_activities import *
 from services.user_activities import *
@@ -85,6 +100,7 @@ def data_create_message():
 
 @app.route("/api/activities/home", methods=['GET'])
 def data_home():
+  #logger=LOGGER
   data = HomeActivities.run()
   return data, 200
 
